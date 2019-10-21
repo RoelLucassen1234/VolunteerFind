@@ -38,7 +38,7 @@ public class UserController {
         return ResponseEntity.status(400).body("chair could not be updated.");
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/users/{userId}")
     public ResponseEntity getUser(@PathVariable int userId) {
 
         if (true) {

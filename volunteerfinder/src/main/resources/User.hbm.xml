@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "model.User" table = "user">
+
+        <meta attribute = "class-description">
+            This class contains the user details.
+        </meta>
+
+        <id name = "id" type = "int" column = "Id">
+            <generator class="native"/>
+        </id>
+
+        <property name = "firstName" column = "firstName" type = "java.lang.String"/>
+        <property name = "lastName" column = "lastName" type = "java.lang.String"/>
+        <property name = "password" column = "password" type = "java.lang.String"/>
+        <property name = "confirmPass" column = "confpass" type = "java.lang.String"/>
+        <property name = "date" column = "date" type = "java.util.Date"/>
+
+
+    </class>
+</hibernate-mapping>
