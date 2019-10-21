@@ -4,6 +4,7 @@ import logic.Factory;
 import model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import presentation.view.UserUpdateViewModel;
 import presentation.view.UserViewModel;
 
 
@@ -24,15 +25,16 @@ public class UserController {
 
     @DeleteMapping("/delete/{userId}")
     public ResponseEntity deleteUser(@PathVariable int userId) {
-        if (true) {
-            return ResponseEntity.ok("");
+        if (Factory.getUserLogic().deleteUser(userId)) {
+            return ResponseEntity.ok("user was deleted");
         }
         return ResponseEntity.status(400).body("user was not deleted or never existed in the first place");
     }
 
     @PutMapping("{userId}")
-    public ResponseEntity updateUser(@RequestBody UserViewModel userViewModel) {
-        if (true) {
+    public ResponseEntity updateUser(@RequestBody UserUpdateViewModel userViewModel) {
+      User user = new User(userViewModel.getId(),userViewModel.getFirstName(),userViewModel.getLastName(),userViewModel.getEmail(),userViewModel.getBirthday());
+        if (Factory.getUserLogic().updateUser(user)) {
             return ResponseEntity.ok("");
         }
         return ResponseEntity.status(400).body("chair could not be updated.");
@@ -41,8 +43,9 @@ public class UserController {
     @GetMapping("/users/{userId}")
     public ResponseEntity getUser(@PathVariable int userId) {
 
-        if (true) {
-            return ResponseEntity.ok("");
+        User user = Factory.getUserLogic().getUser(userId);
+        if (user != null) {
+            return ResponseEntity.ok(user);
         }
         return ResponseEntity.status(400).body("chair does not exist.");
     }

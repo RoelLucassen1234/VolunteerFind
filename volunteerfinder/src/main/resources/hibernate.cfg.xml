@@ -24,7 +24,12 @@
 
 
         <mapping resource="User.hbm.xml" />
+        <mapping resource="Company.hbm.xml"/>
+        <mapping resource="Event.hbm.xml"/>
         <mapping class="model.User"/>
+        <mapping class="model.Company"/>
+        <mapping class="model.Event"/>
+
 
     </session-factory>
 </hibernate-configuration>

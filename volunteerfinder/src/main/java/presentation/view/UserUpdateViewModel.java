@@ -1,44 +1,27 @@
-package model;
+package presentation.view;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
+public class UserUpdateViewModel {
 
-public class User {
-    private int id;
     private String firstName;
     private String lastName;
     private String email;
+    private Date birthday;
     private String password;
     private String confirmPass;
-    private Date date;
+private int id;
 
-    public User() {
+    public UserUpdateViewModel() {
     }
 
-    public User(int id, String firstName, String lastName, String email, Date date) {
-        this.id = id;
+    public UserUpdateViewModel(String firstName, String lastName, String email, Date birthday, String password, String confirmPass, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.date = date;
-    }
-
-    public User(String firstName, String lastName, String email, String password, String confirmPass, Date date) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.birthday = birthday;
         this.password = password;
         this.confirmPass = confirmPass;
-        this.date = date;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
         this.id = id;
     }
 
@@ -66,6 +49,14 @@ public class User {
         this.email = email;
     }
 
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -82,11 +73,11 @@ public class User {
         this.confirmPass = confirmPass;
     }
 
-    public Date getDate() {
-        return date;
+    public int getId() {
+        return id;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -15,4 +15,14 @@ public class UserLogic {
         }
         return false;
     }
+    public User getUser(int userId){
+        return userData.getUser(userId);
+    }
+    public boolean deleteUser(int userId){
+        return userData.removeUser(userId);
+    }
+
+    public boolean updateUser(User user){
+        return userData.updateUser(user);
+    }
 }

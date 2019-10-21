@@ -1,16 +1,18 @@
 package dal;
 
+import model.Company;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class UserData {
+public class CompanyData {
+
     /* Method to CREATE an employee in the database */
-    public boolean addUser(User user) {
+    public boolean addCompany(Company company) {
         Transaction transaction = null;
         try (Session session = HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.save(user);
+            session.save(company);
             transaction.commit();
             return true;
         }
@@ -24,11 +26,11 @@ public class UserData {
     }
 
 
-    public boolean updateUser(User user){
+    public boolean updateCompany(Company company){
         Transaction transaction = null;
         try (Session session =  HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.update(user);
+            session.update(company);
             transaction.commit();
             return true;
         }
@@ -41,11 +43,11 @@ public class UserData {
         }
     }
 
-    public boolean removeUser(int userId) {
+    public boolean removeCompany(int companyId) {
         Transaction transaction = null;
         try (Session session =  HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.remove(session.get(User.class, userId));
+            session.remove(session.get(User.class, companyId));
             transaction.commit();
             return true;
         }
@@ -58,11 +60,11 @@ public class UserData {
         }
     }
 
-    public User getUser(int userId){
+    public Company getCompany(int companyId){
         Transaction transaction = null;
         try(Session session = HibernateConfig.factory.openSession()){
             transaction = session.beginTransaction();
-            return session.get(User.class, userId);
+            return session.get(Company.class, companyId);
         }
         catch (Exception e){
             if (transaction != null){

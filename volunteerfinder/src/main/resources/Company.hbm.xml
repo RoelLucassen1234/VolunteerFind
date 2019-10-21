@@ -1,0 +1,28 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name = "model.Company" table = "company">
+
+        <meta attribute = "class-description">
+            This class contains the user details.
+        </meta>
+
+        <id name = "id" type = "int" column = "Id">
+            <generator class="native"/>
+        </id>
+
+        <property name = "name" column = "name" type = "java.lang.String"/>
+        <property name = "image" column = "image" />
+        <property name = "description" column = "description" type = "java.lang.String"/>
+        <set name="events" table="event" fetch="select" inverse="true" cascade="all" lazy="false">
+            <key column="companyId"/>
+            <one-to-many class="model.Event" />
+        </set>
+
+
+
+    </class>
+</hibernate-mapping>
