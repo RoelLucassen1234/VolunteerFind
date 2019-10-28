@@ -1,7 +1,5 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Date;
 
 
@@ -10,7 +8,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
+    private String hash;
     private String confirmPass;
     private Date date;
 
@@ -23,13 +21,23 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.date = date;
+
+    }
+
+    public User(int id, String firstName, String lastName, String email, Date date, String hash) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.date = date;
+        this.hash = hash;
     }
 
     public User(String firstName, String lastName, String email, String password, String confirmPass, Date date) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.hash = password;
         this.confirmPass = confirmPass;
         this.date = date;
     }
@@ -66,12 +74,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHash() {
+        return hash;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setHash(String password) {
+        this.hash = password;
     }
 
     public String getConfirmPass() {

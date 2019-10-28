@@ -1,10 +1,13 @@
 package dal;
 
+import interfaces.IUserData;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
-public class UserData {
+public class UserData implements IUserData {
     /* Method to CREATE an employee in the database */
     public boolean addUser(User user) {
         Transaction transaction = null;
@@ -69,6 +72,44 @@ public class UserData {
                 transaction.rollback();
             }
             e.printStackTrace();
+            return null;
+        }
+    }
+
+    public User getUserById(int userId){
+        Transaction transaction = null;
+        try(Session session = HibernateConfig.factory.openSession()){
+            transaction = session.beginTransaction();
+            return session.get(User.class, userId);
+        }
+        catch (Exception e){
+            if (transaction != null){
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+    public User getUserByEmail(String email){
+        Transaction transaction = null;
+        try(Session session = HibernateConfig.factory.openSession()){
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM User where email = :email");
+            query.setString("email", email);
+
+            User user = (User)query.uniqueResult();
+            if (user == null)
+                return null;
+
+            return user;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            if (transaction != null){
+                transaction.rollback();
+            }
             return null;
         }
     }

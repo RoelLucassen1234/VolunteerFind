@@ -4,6 +4,7 @@ import logic.Factory;
 import model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import presentation.view.LoginViewModel;
 import presentation.view.UserUpdateViewModel;
 import presentation.view.UserViewModel;
 
@@ -31,7 +32,7 @@ public class UserController {
         return ResponseEntity.status(400).body("user was not deleted or never existed in the first place");
     }
 
-    @PutMapping("{userId}")
+    @PutMapping("/update/{userId}")
     public ResponseEntity updateUser(@RequestBody UserUpdateViewModel userViewModel) {
       User user = new User(userViewModel.getId(),userViewModel.getFirstName(),userViewModel.getLastName(),userViewModel.getEmail(),userViewModel.getBirthday());
         if (Factory.getUserLogic().updateUser(user)) {
@@ -44,6 +45,15 @@ public class UserController {
     public ResponseEntity getUser(@PathVariable int userId) {
 
         User user = Factory.getUserLogic().getUser(userId);
+        if (user != null) {
+            return ResponseEntity.ok(user);
+        }
+        return ResponseEntity.status(400).body("chair does not exist.");
+    }
+    @PostMapping("/login")
+    public ResponseEntity getUser(@RequestBody LoginViewModel loginViewModel) {
+
+        User user = Factory.getUserLogic().login(loginViewModel.getUsername(), loginViewModel.getPassword());
         if (user != null) {
             return ResponseEntity.ok(user);
         }

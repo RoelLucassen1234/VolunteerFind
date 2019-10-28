@@ -1,19 +1,19 @@
 package dal;
 
-import interfaces.ICompanyData;
+import interfaces.IEventData;
 import model.Company;
+import model.Event;
 import model.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class CompanyData implements ICompanyData {
-
+public class EventData implements IEventData {
     /* Method to CREATE an employee in the database */
-    public boolean addCompany(Company company) {
+    public boolean addEvent(Event event) {
         Transaction transaction = null;
         try (Session session = HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.save(company);
+            session.save(event);
             transaction.commit();
             return true;
         }
@@ -27,11 +27,11 @@ public class CompanyData implements ICompanyData {
     }
 
 
-    public boolean updateCompany(Company company){
+    public boolean updateEvent(Event event){
         Transaction transaction = null;
         try (Session session =  HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.update(company);
+            session.update(event);
             transaction.commit();
             return true;
         }
@@ -44,11 +44,11 @@ public class CompanyData implements ICompanyData {
         }
     }
 
-    public boolean removeCompany(int companyId) {
+    public boolean removeEvent(int eventId) {
         Transaction transaction = null;
         try (Session session =  HibernateConfig.factory.openSession()) {
             transaction = session.beginTransaction();
-            session.remove(session.get(Company.class, companyId));
+            session.remove(session.get(Event.class, eventId));
             transaction.commit();
             return true;
         }
@@ -61,11 +61,11 @@ public class CompanyData implements ICompanyData {
         }
     }
 
-    public Company getCompany(int companyId){
+    public Event getEvent(int eventId){
         Transaction transaction = null;
         try(Session session = HibernateConfig.factory.openSession()){
             transaction = session.beginTransaction();
-            return session.get(Company.class, companyId);
+            return session.get(Event.class, eventId);
         }
         catch (Exception e){
             if (transaction != null){
