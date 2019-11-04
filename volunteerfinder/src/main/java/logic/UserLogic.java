@@ -20,8 +20,8 @@ public class UserLogic {
                     if (user.getEmail() != null)
                         if (user.getFirstName() != null && user.getFirstName().length() > 2)
                             if (user.getLastName() != null && user.getLastName().length() > 2) {
-                                String hashedPassw = BCrypt.hashpw(user.getHash(), BCrypt.gensalt(12));
-                                user.setHash(hashedPassw);
+                                String hashpw = BCrypt.hashpw(user.getHash(), BCrypt.gensalt(12));
+                                user.setHash(hashpw);
                                 return userData.addUser(user);
                             }
 

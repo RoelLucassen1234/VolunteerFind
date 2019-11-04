@@ -11,9 +11,9 @@ import {
   MatGridListModule,
   MatTreeModule,
   MatInputModule,
-  MatDialogModule
+  MatDialogModule,
+  MatFormFieldModule
 } from '@angular/material';
-
 @NgModule({
   imports: [
     MatButtonModule,
@@ -40,7 +40,8 @@ import {
     MatInputModule,
     MatDialogModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatFormFieldModule
   ]
 })
 

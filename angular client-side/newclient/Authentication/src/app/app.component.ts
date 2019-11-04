@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../app/services/authentication.service';
-import { User } from '../app/models/user';
+import { AuthenticationService } from './_services';
+import { User } from './_models';
 
-  @Component({ selector: 'app-root', templateUrl: 'app.component.html' })
+@Component({ selector: 'app-root', templateUrl: 'app.component.html' })
 export class AppComponent {
     currentUser: User;
 
@@ -19,5 +19,4 @@ export class AppComponent {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
-    
 }
