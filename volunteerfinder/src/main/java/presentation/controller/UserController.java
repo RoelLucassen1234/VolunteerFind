@@ -1,6 +1,7 @@
 package presentation.controller;
 
 import logic.Factory;
+import model.AngularUser;
 import model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import presentation.view.UserViewModel;
 
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 
 
@@ -50,12 +51,13 @@ public class UserController {
         }
         return ResponseEntity.status(400).body("chair does not exist.");
     }
-    @PostMapping("/login")
+    @PostMapping("/authentication")
     public ResponseEntity getUser(@RequestBody LoginViewModel loginViewModel) {
 
         User user = Factory.getUserLogic().login(loginViewModel.getUsername(), loginViewModel.getPassword());
         if (user != null) {
-            return ResponseEntity.ok(user);
+            AngularUser angularUser = new AngularUser(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail(),user.getHash(), "JWTF");
+            return ResponseEntity.ok(angularUser);
         }
         return ResponseEntity.status(400).body("chair does not exist.");
     }

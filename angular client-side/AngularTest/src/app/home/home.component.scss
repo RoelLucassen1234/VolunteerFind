@@ -1,0 +1,39 @@
+mat-card{
+    width: 1200px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0;
+}
+
+.EventInfo{
+    margin: auto 0;
+}
+
+.info-button{
+    margin: auto 0 !important;
+
+   margin-right: 60px !important;
+}
+
+
+
+.total-amount{
+    margin: auto 0 !important;
+}
+.movie-card {
+    img{
+        height: 100%;
+        object-fit: contain;
+        width: auto;
+        margin: 0;
+    }
+    mat-card-title {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    mat-card-content {
+        margin-top: 20px; 
+    }
+}
