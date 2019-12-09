@@ -13,6 +13,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MaterialModule } from './material.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
     imports: [
@@ -23,10 +24,12 @@ import { MaterialModule } from './material.module';
         BrowserAnimationsModule,
         MaterialModule
     ],
+    
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        RegisterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

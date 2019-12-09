@@ -13,7 +13,7 @@ export class JwtInterceptor implements HttpInterceptor {
         const currentUser = this.authenticationService.currentUserValue;
         const isLoggedIn = currentUser && currentUser.token;
         const isApiUrl = request.url.startsWith("http://localhost:2020");
-        console.log('yeet')
+        
         if (isLoggedIn && isApiUrl) {
             request = request.clone({
                 setHeaders: {

@@ -15,7 +15,7 @@ import presentation.view.UserViewModel;
 public class UserController {
 
 
-    @PostMapping("")
+    @PostMapping()
     public ResponseEntity postUser(@RequestBody UserViewModel userViewModel) {
 
         if (Factory.getUserLogic().postUser(new User(userViewModel.getFirstName(),userViewModel.getLastName(),
