@@ -72,8 +72,7 @@ export class RegisterComponent implements OnInit {
 
     this.checkPasswords(this.loginForm);
 
-    console.log(!this.notsame);
-    if (! this.notsame) {
+    if (!this.notsame) {
       this.loading = true;
       this.userService.register(this.f.firstName.value, this.f.lastName.value, this.f.email.value, this.f.password.value, this.f.confirmPassword.value)
       .subscribe(
