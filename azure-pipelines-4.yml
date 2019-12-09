@@ -21,16 +21,10 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: ArchiveFiles@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    rootFolderOrFile: 'volunteerfinder'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'MavenDeployment'
-    publishLocation: 'Container'
-    
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
+    appType: 'webAppLinux'
+    WebAppName: 'MavenAPI'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
