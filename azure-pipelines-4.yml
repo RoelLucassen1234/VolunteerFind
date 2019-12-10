@@ -39,4 +39,4 @@ steps:
     appType: 'webAppLinux'
     WebAppName: 'MavenAPI'
     
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).war'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
