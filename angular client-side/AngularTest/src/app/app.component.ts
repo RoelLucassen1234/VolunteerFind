@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({ selector: 'app-root', templateUrl: 'app.component.html' })
 export class AppComponent {
@@ -10,7 +11,9 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private authenticationService: AuthenticationService
+        private authenticationService: AuthenticationService,
+        private sanitizer: DomSanitizer
+        
     ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }

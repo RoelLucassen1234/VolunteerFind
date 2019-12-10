@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: HttpClient, private restServer: RestService) { }
 
   getAll() {
-    return this.http.get<User[]>(this.restServer.getRestUrl + `/users`);
+    return this.http.get<User[]>(this.restServer.getRestUrl() + `/users`);
   }
 
   register(firstName: string, lastName: string, email: string, password: string, confPass: string) {

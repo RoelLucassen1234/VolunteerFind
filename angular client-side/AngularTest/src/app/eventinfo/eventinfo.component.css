@@ -1,0 +1,30 @@
+
+.movie-card{
+display: flex;
+padding: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.volunteerBoard{
+    display: flex;
+    justify-content: center;
+}
+
+mat-card{
+    width: 70px;
+    margin: 10px;
+}
+
+.eventImg{
+    width: 200px;
+    object-fit: contain;
+}
+
+
+.upperEcho{
+
+    padding: 35px;
+}

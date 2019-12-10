@@ -38,7 +38,7 @@ public class EventController {
     public ResponseEntity getAllEvents() {
 
         List<Event> events = Factory.getEventLogic().getEvents();
-        System.out.println(events.get(1).getCompany().getName());
+
         if (events != null) {
             return ResponseEntity.ok(events);
         }

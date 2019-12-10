@@ -15,7 +15,7 @@
         <!-- Assume test is the database name -->
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://volunteerfind.cmawsiukjkwq.us-east-2.rds.amazonaws.com?useSSL=false
+            jdbc:mysql://volunteerfind.cmawsiukjkwq.us-east-2.rds.amazonaws.com/innodb?useSSL=false
         </property>
 
         <property name="hibernate.connection.username">

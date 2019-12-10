@@ -1,0 +1,23 @@
+
+<div class="event-content">
+   
+<div class="upperEcho">
+    <div class="eventImg">
+            <img mat-card-image [src]="('data:image/jpg;base64,' + this.event.image)">
+    </div>
+    <div class="eventDescription"> 
+        <p>{{this.event.description}}</p>
+        
+    </div>
+</div>
+
+<div class="volunteerBoard">
+<mat-card class="movie-card" *ngFor="let user of this.event.users"> 
+  <p>  {{user.firstName}}</p> 
+</mat-card>
+<button (click)="ngShowInfo()" ></button> 
+
+
+</div>
+</div>
+
