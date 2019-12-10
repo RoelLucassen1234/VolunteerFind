@@ -15,11 +15,14 @@
         <!-- Assume test is the database name -->
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://localhost:3306/database
+            jdbc:mysql://volunteerfind.cmawsiukjkwq.us-east-2.rds.amazonaws.com?useSSL=false
         </property>
 
         <property name="hibernate.connection.username">
-            root
+            admin
+        </property>
+        <property name="hibernate.connection.password">
+            administrator
         </property>
 
 

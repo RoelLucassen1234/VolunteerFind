@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.Entity;
@@ -9,11 +10,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Company {
+
     private int id;
     private String name;
     private String description;
     private byte[] image;
-    @JsonManagedReference
+    @JsonBackReference
     private Set<Event> events;
 
     public Company() {

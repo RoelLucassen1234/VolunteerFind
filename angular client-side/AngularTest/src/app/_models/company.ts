@@ -4,4 +4,5 @@ export class Company {
     name : String;
     description : String;
     Image : string;
+    events : Event[];
 }

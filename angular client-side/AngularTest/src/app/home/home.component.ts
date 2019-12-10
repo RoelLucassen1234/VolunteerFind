@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, ChangeDetectorRef } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models/user';
@@ -13,17 +13,21 @@ import { EventsService } from '../_services/events.service';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    users: Event[] = [];
+    events: Event[] = [];
 
-    constructor(private eventService: EventsService) { }
+    constructor(private eventService: EventsService, private cdRef : ChangeDetectorRef) { }
 
     ngOnInit() {
-        this.eventService.getAll().pipe(first()).subscribe(users => {
-            this.users = users
-            console.log(this.users);
+        this.eventService.getAll().pipe(first()).subscribe(data => {
+            this.events = data
+            console.log(this.events);
+            this.cdRef.detectChanges();
+            
         })
 
     }
+
+    
 }
 
 

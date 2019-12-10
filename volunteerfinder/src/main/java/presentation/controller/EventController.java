@@ -19,7 +19,7 @@ public class EventController {
         Company company = Factory.getCompanyLogic().getCompany(eventViewModel.getCompanyId());
         System.out.println(eventViewModel.getCompanyId());
 
-        Event event = new Event(eventViewModel.getName(), eventViewModel.getDescription(),eventViewModel.getImage(),company, null);
+        Event event = new Event(eventViewModel.getName(), eventViewModel.getDescription(),eventViewModel.getImage(),company, null, eventViewModel.getNumberOfPeople());
         if (Factory.getEventLogic().postEvent(event))
             return ResponseEntity.status(200).body("uploaded event to the database");
         return ResponseEntity.status(400).body("Something went Wrong");
@@ -34,10 +34,11 @@ public class EventController {
         }
         return ResponseEntity.status(400).body("event does not exist.");
     }
-    @GetMapping("/events")
+    @GetMapping("")
     public ResponseEntity getAllEvents() {
 
         List<Event> events = Factory.getEventLogic().getEvents();
+        System.out.println(events.get(1).getCompany().getName());
         if (events != null) {
             return ResponseEntity.ok(events);
         }

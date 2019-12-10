@@ -16,14 +16,18 @@
 
         <property name = "name" column = "name" type = "java.lang.String"/>
         <property name = "description" column = "description" type = "java.lang.String"/>
-        <property name = "image" column = "image"/>
+        <property name = "image" column = "image" />
+        <property name = "totalAmountOfPeople" column = "numberOfPeople" type = "java.lang.Integer"/>
         <many-to-one name="company" class="model.Company" lazy="false">
             <column name="companyId" not-null="true"/>
         </many-to-one>
-
         <set name="users" table="event_user" fetch="select" inverse="true" cascade="all" lazy="false">
-            <key column="userId"/>
-            <one-to-many class="model.User" />
+            <key>
+                <column name="eventId" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.User">
+                <column name="userId" not-null="true" />
+            </many-to-many>
         </set>
 
 

@@ -10,15 +10,15 @@ public class EventViewModel
     private byte[] Image;
 
     private int companyId;
-
+private int numberOfPeople;
     public EventViewModel() {
     }
 
-    public EventViewModel(String name, String description, byte[] image,  int companyId) {
+    public EventViewModel(String name, String description, byte[] image,  int companyId, int numberOfPeople) {
         this.name = name;
         this.description = description;
         Image = image;
-
+this.numberOfPeople = numberOfPeople;
         this.companyId = companyId;
     }
 
@@ -46,6 +46,13 @@ public class EventViewModel
         Image = image;
     }
 
+    public int getNumberOfPeople() {
+        return numberOfPeople;
+    }
+
+    public void setNumberOfPeople(int numberOfPeople) {
+        this.numberOfPeople = numberOfPeople;
+    }
 
     public int getCompanyId() {
         return companyId;

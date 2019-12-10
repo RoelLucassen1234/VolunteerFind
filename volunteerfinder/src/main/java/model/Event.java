@@ -1,45 +1,66 @@
 package model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Blob;
 import java.util.Set;
 
+//@Entity
+//@Table(name="event")
 
 public class Event {
 
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name="id")
     private int id;
-    private String name;
-    private String description;
 
+    //    @Column(name="name")
+    private String name;
+    //    @Column(name="description")
+    private String description;
+    //    @Column(name = "image", columnDefinition = "longblob")
     private byte[] Image;
 
+    //    @ManyToOne
+//    @Column(name="description")
+    @JsonManagedReference
     private Company company;
+
+    //    @ManyToMany
+    @JsonManagedReference
     private Set<User> users;
+
+    //    @Column(name="numberOfPeople")
+    private int totalAmountOfPeople;
 
     public Event() {
     }
 
-    public Event(int id, String name, String description, byte[] image, Company company, Set<User> users) {
+    public Event(int id, String name, String description, byte[] image, Company company, Set<User> users, int numberOfPeople) {
         this.id = id;
         this.name = name;
         this.description = description;
         Image = image;
-
+        this.totalAmountOfPeople = numberOfPeople;
         this.company = company;
         this.users = users;
     }
 
-    public Event(String name, String description, byte[] image, Company company, Set<User> users) {
+    public Event(String name, String description, byte[] image, Company company, Set<User> users, int numberOfPeople) {
         this.name = name;
         this.description = description;
         Image = image;
         this.company = company;
         this.users = users;
+        this.totalAmountOfPeople = numberOfPeople;
+    }
+
+    public int getTotalAmountOfPeople() {
+        return totalAmountOfPeople;
+    }
+
+    public void setTotalAmountOfPeople(int numberOfPeople) {
+        this.totalAmountOfPeople = numberOfPeople;
     }
 
     public int getId() {

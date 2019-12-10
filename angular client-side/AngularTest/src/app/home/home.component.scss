@@ -1,12 +1,16 @@
 .home-content{
-    padding: 50px;
+    padding: 35px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    
 }
 
 mat-card{
     width: 400px;
+   
+    
+    margin: 15px;
     // display: flex;    
     // overflow: hidden;
     // padding: 0;

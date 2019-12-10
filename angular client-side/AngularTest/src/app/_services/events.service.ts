@@ -9,6 +9,6 @@ export class EventsService {
   constructor(private http: HttpClient, private rest : RestService) { }
 
   getAll() {
-   return this.http.get<Event[]>(this.rest.getRestUrl() + `/event/events`);
+   return this.http.get<Event[]>(this.rest.getRestUrl() + `/events`);
   }
 }

@@ -1,6 +1,12 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.ManyToMany;
 import java.util.Date;
+import java.util.Set;
 
 
 public class User {
@@ -11,6 +17,10 @@ public class User {
     private String hash;
     private String confirmPass;
     private Date date;
+
+
+    @JsonBackReference
+    private Set<Event> events;
 
     public User() {
     }
@@ -40,6 +50,14 @@ public class User {
         this.hash = password;
         this.confirmPass = confirmPass;
         this.date = date;
+    }
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
     }
 
     public int getId() {
