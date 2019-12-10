@@ -38,4 +38,5 @@ steps:
     azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
     appType: 'webAppLinux'
     WebAppName: 'MavenAPI'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+    
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).war'
