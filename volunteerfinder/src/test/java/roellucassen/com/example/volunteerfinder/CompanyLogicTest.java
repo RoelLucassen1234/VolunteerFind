@@ -11,7 +11,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -24,7 +26,7 @@ public class CompanyLogicTest {
     @Before
     public void before() {
         ICompanyData iCompanyData = mock(ICompanyData.class);
-        List<Event> events = new ArrayList<>();
+        Set<Event> events = new HashSet<>();
         companyId = 5;
 
         companyLogic = new CompanyLogic(iCompanyData);

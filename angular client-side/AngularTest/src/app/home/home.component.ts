@@ -2,22 +2,28 @@
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models/user';
-import { UserService} from '../_services/user.service';
-import {AuthenticationService} from '../_services/authentication.service'
+import { UserService } from '../_services/user.service';
+import { AuthenticationService } from '../_services/authentication.service'
+import { EventsService } from '../_services/events.service';
 
 
 
-@Component({ templateUrl: 'home.component.html',
-styleUrls: ['./home.component.scss'] })
+@Component({
+    templateUrl: 'home.component.html',
+    styleUrls: ['./home.component.scss']
+})
 export class HomeComponent {
-    users: User[] = [];
+    users: Event[] = [];
 
-    constructor(private userService: UserService) { }
+    constructor(private eventService: EventsService) { }
 
     ngOnInit() {
-        // this.userService.getAll().pipe(first()).subscribe(users => {
-        //     this.users = users;
-        
+        this.eventService.getAll().pipe(first()).subscribe(users => {
+            this.users = users
+            console.log(this.users);
+        })
+
     }
 }
+
 

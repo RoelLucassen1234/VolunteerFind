@@ -17,7 +17,6 @@
         <property name = "name" column = "name" type = "java.lang.String"/>
         <property name = "description" column = "description" type = "java.lang.String"/>
         <property name = "image" column = "image"/>
-        <property name = "amountOfPeopleNeeded" column = "amountOfPeopleNeeded" type = "java.lang.Integer"/>
         <many-to-one name="company" class="model.Company" lazy="false">
             <column name="companyId" not-null="true"/>
         </many-to-one>

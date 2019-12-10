@@ -5,6 +5,8 @@ import interfaces.IEventData;
 import model.Event;
 import presentation.view.EventUpdateViewModel;
 
+import java.util.List;
+
 public class EventLogic {
 
     IEventData eventData;
@@ -36,8 +38,6 @@ public class EventLogic {
     public boolean updateCompany(EventUpdateViewModel updatedEvent) {
         Event event = eventData.getEvent(updatedEvent.getId());
 
-        if (updatedEvent.getAmountOfPeopleNeeded() > 0)
-        event.setAmountOfPeopleNeeded(updatedEvent.getAmountOfPeopleNeeded());
         if (updatedEvent.getDescription() != null)
         event.setDescription(updatedEvent.getDescription());
         if (updatedEvent.getImage() != null)
@@ -60,6 +60,10 @@ public class EventLogic {
         }
 
         return eventData.updateEvent(event);
+    }
+
+    public List<Event> getEvents() {
+        return eventData.getEvents();
     }
 }
 

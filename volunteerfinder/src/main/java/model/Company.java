@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Blob;
 import java.util.List;
+import java.util.Set;
 
 public class Company {
     private int id;
@@ -13,7 +14,7 @@ public class Company {
     private String description;
     private byte[] image;
     @JsonManagedReference
-    private List<Event> events;
+    private Set<Event> events;
 
     public Company() {
     }
@@ -24,7 +25,7 @@ public class Company {
         this.image = image;
     }
 
-    public Company(int id, String name, String description, List<Event> events, byte[] image) {
+    public Company(int id, String name, String description, Set<Event> events, byte[] image) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -56,11 +57,11 @@ public class Company {
         this.description = description;
     }
 
-    public List<Event> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public void setEvents(Set<Event> events) {
         this.events = events;
     }
 

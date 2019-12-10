@@ -18,28 +18,28 @@ public class Event {
 
     private byte[] Image;
 
-    private int amountOfPeopleNeeded;
     private Company company;
     private Set<User> users;
 
     public Event() {
     }
 
-    public Event(int id, String name, String description, byte[] image, int amountOfPeopleNeeded, Company company, Set<User> users) {
+    public Event(int id, String name, String description, byte[] image, Company company, Set<User> users) {
         this.id = id;
         this.name = name;
         this.description = description;
         Image = image;
-        this.amountOfPeopleNeeded = amountOfPeopleNeeded;
+
         this.company = company;
         this.users = users;
     }
 
-    public Event(String name, String description, byte[] image, int amountOfPeopleNeeded, Company company, Set<User> users) {
+    public Event(String name, String description, byte[] image, Company company, Set<User> users) {
         this.name = name;
         this.description = description;
         Image = image;
-        this.amountOfPeopleNeeded = amountOfPeopleNeeded;
+        this.company = company;
+        this.users = users;
     }
 
     public int getId() {
@@ -74,13 +74,6 @@ public class Event {
         Image = image;
     }
 
-    public int getAmountOfPeopleNeeded() {
-        return amountOfPeopleNeeded;
-    }
-
-    public void setAmountOfPeopleNeeded(int amountOfPeopleNeeded) {
-        this.amountOfPeopleNeeded = amountOfPeopleNeeded;
-    }
 
     public Company getCompany() {
         return company;
