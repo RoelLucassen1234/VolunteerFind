@@ -4,6 +4,7 @@ import logic.Factory;
 import model.AngularUser;
 import model.User;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 import presentation.view.LoginViewModel;
 import presentation.view.UserUpdateViewModel;
@@ -56,19 +57,24 @@ public class UserController {
 
         User user = Factory.getUserLogic().login(loginViewModel.getUsername(), loginViewModel.getPassword());
         if (user != null) {
-            AngularUser angularUser = new AngularUser(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail(),user.getHash(), "JWTF");
+            Factory.getUserLogic().updateUser(user);
+            AngularUser angularUser = new AngularUser(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail(),user.getHash(), user.getToken());
             return ResponseEntity.ok(angularUser);
         }
         return ResponseEntity.status(400).body("chair does not exist.");
     }
 
-    @GetMapping("/event/{eventId}")
-    public ResponseEntity getAllUsersFromEvent(@PathVariable int eventId) {
+    @GetMapping("/session/{sessionToken}")
+    public ResponseEntity getUserFromSession(@PathVariable String sessionToken) {
 
-        if (true) {
-            return ResponseEntity.ok("");
+        User user = Factory.getUserLogic().getUserBySession(sessionToken);
+        if (user != null) {
+            user.setHash(null);
+            user.setConfirmPass(null);
+
+            return ResponseEntity.ok(user);
         }
-        return ResponseEntity.status(400).body("reservations do not exist.");
+        return ResponseEntity.status(400).body("user with sessiontoken does not exist.");
     }
 
 

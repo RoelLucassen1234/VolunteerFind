@@ -19,6 +19,8 @@
         <property name = "email" column = "email" type = "java.lang.String"/>
         <property name = "hash" column = "password" type = "java.lang.String"/>
         <property name = "date" column = "date" type = "java.util.Date"/>
+        <property name = "token" column = "sessionToken" type = "java.lang.String"/>
+
         <set name="events" table="event_user" fetch="select" inverse="true" cascade="all" lazy="false">
             <key>
                 <column name="userId" not-null="true" />

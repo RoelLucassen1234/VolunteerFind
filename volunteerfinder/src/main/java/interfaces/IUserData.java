@@ -8,6 +8,6 @@ public interface IUserData {
     boolean updateUser(User user);
     boolean addUser(User user);
     User getUserByEmail(String email);
-
+    User getUserBySession(String sessionToken);
     User getUserById(int userId);
 }

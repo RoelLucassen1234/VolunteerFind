@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Eventment } from '../_models/eventment';
 import { ActivatedRoute, Params } from '@angular/router';
 import { EventsService } from '../_services/events.service';
+import { AuthenticationService } from '../_services';
+import { User } from '../_models';
 
 @Component({
   selector: 'app-eventinfo',
@@ -11,8 +13,9 @@ import { EventsService } from '../_services/events.service';
 export class EventinfoComponent implements OnInit {
 
   event : Eventment;
+  user : User;
 
-  constructor(private route: ActivatedRoute, private eventService: EventsService) { }
+  constructor(private route: ActivatedRoute, private eventService: EventsService, private authenticationService : AuthenticationService) { }
 
   ngOnInit() {
     console.log(this.route.params);
@@ -30,7 +33,11 @@ export class EventinfoComponent implements OnInit {
 
 
   ngShowInfo(){
-    console.log(this.event.users);
+   this.authenticationService.getUserFromSession().subscribe(a => {
+      this.user = a;
+      console.log(this.user);
+    });
+   
   }
 
 

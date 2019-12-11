@@ -17,6 +17,7 @@ public class User {
     private String hash;
     private String confirmPass;
     private Date date;
+    private String token;
 
 
     @JsonBackReference
@@ -74,6 +75,14 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getLastName() {

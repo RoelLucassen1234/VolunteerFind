@@ -113,4 +113,25 @@ public class UserData implements IUserData {
             return null;
         }
     }
+    public User getUserBySession(String sessionToken){
+        Transaction transaction = null;
+        try(Session session = HibernateConfig.factory.openSession()){
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM User where sessionToken = :sessionToken");
+            query.setString("sessionToken", sessionToken);
+
+            User user = (User)query.uniqueResult();
+            if (user == null)
+                return null;
+
+            return user;
+        }
+        catch (Exception e){
+            System.out.println(e);
+            if (transaction != null){
+                transaction.rollback();
+            }
+            return null;
+        }
+    }
 }

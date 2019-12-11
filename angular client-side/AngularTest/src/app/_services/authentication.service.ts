@@ -10,6 +10,7 @@ export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<User>;
     domain: string = 'http://localhost:2020';
     public currentUser: Observable<User>;
+    token: String = "";
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
@@ -21,16 +22,16 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-        console.log(password);
-        console.log(username);
+
         return this.http.post<any>(this.domain + `/users/authentication`, { username, password })
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                console.log(user)
+                console.log(user);
+
                 if (user && user.token) {
-                    console.log(user)
+                    console.log("here");
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    localStorage.setItem('currentUser', user.token);
                     this.currentUserSubject.next(user);
                 }
                 console.log("Done")
@@ -43,5 +44,12 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    getUserFromSession() {
+
+        this.token = localStorage.getItem('currentUser');
+        console.log(this.domain + `/users/session/` + this.token);
+        return this.http.get<User>(this.domain + '/users/session/' + this.token);
     }
 }

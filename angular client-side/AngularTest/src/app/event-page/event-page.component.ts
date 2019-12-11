@@ -14,7 +14,7 @@ export class EventPageComponent implements OnInit {
 
   event : Eventment;
 
-  constructor(private route: ActivatedRoute, private eventService: EventsService, private _sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private eventService: EventsService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
