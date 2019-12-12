@@ -30,26 +30,14 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
     replaceExistingArchive: true
 
-# - task: CopyFiles@2
-#   inputs:
-#     SourceFolder: 'target'
-#     Contents: '*.jar'
-#     TargetFolder: '$(build.artifactstagingdirectory)'
 
-
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'api'
-#     publishLocation: 'Container'
-
-
-
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
-    appType: 'webAppLinux'
-    WebAppName: 'MavenAPI'
-    
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
+        appType: 'webAppLinux'
+        WebAppName: 'MavenAPI'
+        deployToSlotOrASE: true
+        ResourceGroupName: 'MavenDeployment'
+        SlotName: 'production'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
