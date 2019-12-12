@@ -54,5 +54,5 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'MavenDeployment'
     SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
     RuntimeStack: 'JAVA|11-java11'
