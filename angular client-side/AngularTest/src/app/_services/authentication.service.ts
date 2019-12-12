@@ -49,7 +49,6 @@ export class AuthenticationService {
     getUserFromSession() {
 
         this.token = localStorage.getItem('currentUser');
-        console.log(this.domain + `/users/session/` + this.token);
         return this.http.get<User>(this.domain + '/users/session/' + this.token);
     }
 }

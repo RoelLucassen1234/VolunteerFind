@@ -45,19 +45,10 @@ public class EventLogic {
         if (updatedEvent.getName() != null && updatedEvent.getName() != event.getName())
             event.setName(updatedEvent.getName());
 
-        if (updatedEvent.getCompanyId() != 0 && updatedEvent.getCompanyId() != event.getCompany().getId())
-            event.setCompany(Factory.getCompanyLogic().getCompany(updatedEvent.getCompanyId()));
+        if (updatedEvent.getCompany().getId() != 0 && updatedEvent.getCompany().getId() != event.getCompany().getId())
+            event.setCompany(Factory.getCompanyLogic().getCompany(updatedEvent.getCompany().getId()));
 
-        if (updatedEvent.getUsersToAdd().size() > 0){
-            for (int userId: updatedEvent.getUsersToAdd()) {
-                event.getUsers().add(Factory.getUserLogic().getUser(userId));
-            }
-        }
-        if (updatedEvent.getUsersToRemove().size() > 0){
-            for (int userId: updatedEvent.getUsersToRemove()) {
-                event.getUsers().remove(Factory.getUserLogic().getUser(userId));
-            }
-        }
+       event.setUsers(updatedEvent.getUsers());
 
         return eventData.updateEvent(event);
     }

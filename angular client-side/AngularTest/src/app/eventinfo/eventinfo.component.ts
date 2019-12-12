@@ -14,6 +14,7 @@ export class EventinfoComponent implements OnInit {
 
   event : Eventment;
   user : User;
+  joinable : Boolean = false;
 
   constructor(private route: ActivatedRoute, private eventService: EventsService, private authenticationService : AuthenticationService) { }
 
@@ -22,20 +23,41 @@ export class EventinfoComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.eventService.getEvent(params.id).subscribe(data => {
         this.event = data;
-
       });
-   
   }
+  )
 
-    )
-    
+  this.ngGetUserInfo();
+  console.log(this.event.users);
+  console.log(this.user);
+
+  if(this.event.users.length > 0)
+  if(this.event.users.some(e => e.id == this.user.id)){
+    this.joinable = false;
+  }else{
+    this.joinable = true;
+  }
   };
 
 
-  ngShowInfo(){
+  joinOrLeave(){
+    if (this.joinable){
+      this.event.users.push(this.user);
+      this.eventService.updateEvent(this.event);
+      this.joinable = false;
+
+    }else
+    {
+this.event.users = this.event.users.filter(e => e.id != this.user.id);
+this.joinable = true;
+    }
+  }
+
+
+
+  ngGetUserInfo(){
    this.authenticationService.getUserFromSession().subscribe(a => {
       this.user = a;
-      console.log(this.user);
     });
    
   }

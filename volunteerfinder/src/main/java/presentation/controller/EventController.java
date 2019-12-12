@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import presentation.view.EventUpdateViewModel;
 import presentation.view.EventViewModel;
 
+import javax.validation.Valid;
 import java.io.Console;
 import java.util.List;
 
@@ -46,16 +47,17 @@ public class EventController {
     }
 
 
-    @PutMapping("{eventId}")
-    public ResponseEntity updateEvent(@RequestBody EventUpdateViewModel eventUpdateViewModel) {
+    @PutMapping("/{eventId}")
+    public ResponseEntity updateEvent(@PathVariable(value = "eventId") int eventId ,@Valid @RequestBody EventUpdateViewModel eventUpdateViewModel) {
 
-           if (Factory.getEventLogic().updateCompany(eventUpdateViewModel)) {
-            return ResponseEntity.ok("update succeeded");
-        }
+        System.out.println(eventUpdateViewModel);
+           //if (Factory.getEventLogic().updateCompany(eventUpdateViewModel)) {
+         //   return ResponseEntity.ok("update succeeded");
+       // }
         return ResponseEntity.status(400).body("event could not be updated.");
     }
 
-    @DeleteMapping("/delete/{eventId}")
+    @DeleteMapping("/{eventId}")
     public ResponseEntity deleteEvent(@PathVariable int eventId) {
         if (Factory.getEventLogic().deleteEvent(eventId)) {
             return ResponseEntity.ok("event was deleted");

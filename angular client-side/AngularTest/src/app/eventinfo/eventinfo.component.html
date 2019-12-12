@@ -6,14 +6,17 @@
       <h1>{{this.event.name}} </h1>
       <p>{{this.event.description}}</p>
     </div>
+   <div class="button-group"> 
+    <button class="button-join" mat-raised-button color='primary'(click)="joinOrLeave()">{{ joinable == true ? 'Case 1' : 'Case 2' }}</button>
+  </div>
     </mat-card>
 
     <div class="lowerecho">
-        <h3 class="peopleAmount">4 / 8</h3>
+        <h3 class="peopleAmount"> {{this.event.users.length}} / {{this.event.totalAmountOfPeople}}</h3>
   <mat-card class="volunteerboard">
  
     <mat-card class="movie-card" *ngFor="let user of this.event.users">
-      <p> {{user.firstName}}</p>
+      <p> {{user.firstName}}&nbsp;{{user.lastName}}</p>
     </mat-card>
     <!-- <button mat-raised-button color='primary'  (click)="ngShowInfo()">Join</button> -->
 

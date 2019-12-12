@@ -4,7 +4,7 @@ import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { AuthGuard } from './_guards';
 import { RegisterComponent } from './register/register.component';
-import { EventPageComponent } from './event-page/event-page.component';
+
 import { EventinfoComponent } from './eventinfo/eventinfo.component';
 
 const appRoutes: Routes = [

@@ -1,19 +1,13 @@
 
 .movie-card{
-    display: flex;
-    width: 80px;
-    height: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 10px;
-    background-color: dimgrey;
-    justify-content: center;
-
+    background-color:#616161;
+    width: auto;
+    margin: 5px !important;
 }
-
 .volunteerBoard{
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 mat-card{
@@ -25,6 +19,13 @@ mat-card{
 .eventImg{
     width: 300px;
     object-fit: contain;
+}
+.button-group{
+    width: 100px;
+    margin-top: 250px;
+}
+.button-join{
+    width: 120px;
 }
 
 .eventDescription{

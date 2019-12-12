@@ -14,15 +14,11 @@ export class EventPageComponent implements OnInit {
 
   event : Eventment;
 
-  constructor(private route: ActivatedRoute, private eventService: EventsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.eventService.getEvent(params.id).subscribe(data => {
-        this.event = data;
-      });
-    console.log(this.event);
-  });
+    
+  };
 
 }
-}
+

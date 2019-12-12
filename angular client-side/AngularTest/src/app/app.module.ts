@@ -14,7 +14,7 @@ import { LoginComponent } from './login';;
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MaterialModule } from './material.module';
 import { RegisterComponent } from './register/register.component';
-import { EventPageComponent } from './event-page/event-page.component';
+
 import { EventinfoComponent } from './eventinfo/eventinfo.component';
 
 @NgModule({

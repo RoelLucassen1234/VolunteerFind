@@ -1,31 +1,45 @@
 package presentation.view;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import model.Company;
 import model.User;
 
 import java.util.Set;
 
 public class EventUpdateViewModel {
-    private int id;
-    private String name;
-    private String description;
 
+    //    @Id
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Column(name="id")
+    private int id;
+
+    //    @Column(name="name")
+    private String name;
+    //    @Column(name="description")
+    private String description;
+    //    @Column(name = "image", columnDefinition = "longblob")
     private byte[] Image;
 
-    private int amountOfPeopleNeeded;
-    private int companyId;
-    private Set<Integer> usersToRemove;
-    private Set<Integer> usersToAdd;
+    //    @ManyToOne
+//    @Column(name="description")
 
-    public EventUpdateViewModel(int id, String name, String description, byte[] image, int amountOfPeopleNeeded, int companyId, Set<Integer> usersToRemove, Set<Integer> usersToAdd) {
+    private Company company;
+
+    //    @ManyToMany
+
+    private Set<User> users;
+
+    //    @Column(name="numberOfPeople")
+    private int totalAmountOfPeople;
+
+    public EventUpdateViewModel(int id, String name, String description, byte[] image, Company company, Set<User> users, int totalAmountOfPeople) {
         this.id = id;
         this.name = name;
         this.description = description;
         Image = image;
-        this.amountOfPeopleNeeded = amountOfPeopleNeeded;
-        this.companyId = companyId;
-        this.usersToRemove = usersToRemove;
-        this.usersToAdd = usersToAdd;
+        this.company = company;
+        this.users = users;
+        this.totalAmountOfPeople = totalAmountOfPeople;
     }
 
     public EventUpdateViewModel() {
@@ -63,35 +77,27 @@ public class EventUpdateViewModel {
         Image = image;
     }
 
-    public int getAmountOfPeopleNeeded() {
-        return amountOfPeopleNeeded;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setAmountOfPeopleNeeded(int amountOfPeopleNeeded) {
-        this.amountOfPeopleNeeded = amountOfPeopleNeeded;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 
-    public int getCompanyId() {
-        return companyId;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
-    public Set<Integer> getUsersToRemove() {
-        return usersToRemove;
+    public int getTotalAmountOfPeople() {
+        return totalAmountOfPeople;
     }
 
-    public void setUsersToRemove(Set<Integer> usersToRemove) {
-        this.usersToRemove = usersToRemove;
-    }
-
-    public Set<Integer> getUsersToAdd() {
-        return usersToAdd;
-    }
-
-    public void setUsersToAdd(Set<Integer> usersToAdd) {
-        this.usersToAdd = usersToAdd;
+    public void setTotalAmountOfPeople(int totalAmountOfPeople) {
+        this.totalAmountOfPeople = totalAmountOfPeople;
     }
 }
