@@ -22,21 +22,34 @@ steps:
     goals: 'package'
 
 
-- task: ArchiveFiles@2
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(Build.BinariesDirectory)'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+- task: CopyFiles@2
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+    SourceFolder: 'target'
+    Contents: '*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
 
 
-
-- task: AzureRmWebAppDeployment@4
+- task: PublishBuildArtifacts@1
   inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
-    appType: 'webAppLinux'
-    WebAppName: 'MavenAPI'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'api'
+    publishLocation: 'Container'
+
+
+
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure for Students (2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
+#     appType: 'webAppLinux'
+#     WebAppName: 'MavenAPI'
     
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+#     packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
