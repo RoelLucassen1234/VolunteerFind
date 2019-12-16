@@ -22,17 +22,17 @@ steps:
     goals: 'package'
 
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(Build.BinariesDirectory)'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'target'
+    SourceFolder: './volunteerfinder/target'
     Contents: '*.jar'
     TargetFolder: '$(Build.ArtifactstagingDirectory)'
 
