@@ -34,7 +34,7 @@ steps:
   inputs:
     SourceFolder: './volunteerfinder/target'
     Contents: '*.jar'
-    TargetFolder: '$(System.DefaultWorkingDirectory)/builds'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 # - task: PublishBuildArtifacts@1
 #   inputs:
