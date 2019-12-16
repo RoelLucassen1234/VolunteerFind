@@ -34,13 +34,13 @@ steps:
   inputs:
     SourceFolder: './volunteerfinder/target'
     Contents: '*.jar'
-    TargetFolder: '$(Build.ArtifactstagingDirectory)'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/builds'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'AngularTest'
-    publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'AngularTest'
+#     publishLocation: 'Container'
 
 
 # - task: AzureRmWebAppDeployment@4
