@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <mat-form-field style=" width: 100%;">
-                    <input matInput type="text" placeholder="Last name" formControlName="email" class="form-control"
+                    <input matInput type="text" placeholder="Email" formControlName="email" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                     <mat-error *ngIf="submitted && f.email.errors"> email is required </mat-error>
                 </mat-form-field>
@@ -50,7 +50,7 @@
             <mat-divider style="border-color: #c7c7c7;"></mat-divider>
             <div class="register-group">
                 <div class="register-link">
-                    <a mat-button class="registerLink" [routerLink]="['/register']">REGISTER</a>
+                    <a mat-button class="registerLink" [routerLink]="['/login']">return to the login page</a>
                 </div>
                 <div *ngIf="error" class="alert alert-danger">{{error}}</div>
             </div>
