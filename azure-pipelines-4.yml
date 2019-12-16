@@ -22,19 +22,25 @@ steps:
     goals: 'package'
 
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-
-# - task: CopyFiles@2
+# - task: ArchiveFiles@2
 #   inputs:
-#     SourceFolder: 'target'
-#     Contents: '*.jar'
-#     TargetFolder: '$(build.artifactstagingdirectory)'
+#     rootFolderOrFile: '$(Build.BinariesDirectory)'
+#     includeRootFolder: true
+#     archiveType: 'zip'
+#     archiveFile: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+#     replaceExistingArchive: true
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './volunteerfinder/target'
+    Contents: '*.jar'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/builds'
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+#     ArtifactName: 'AngularTest'
+#     publishLocation: 'Container'
 
 
 # - task: AzureRmWebAppDeployment@4
@@ -45,14 +51,14 @@ steps:
 #     WebAppName: 'MavenAPI'
 #     packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure for Students(2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
-    appType: 'webAppLinux'
-    WebAppName: 'MavenAPI'
-    deployToSlotOrASE: true
-    ResourceGroupName: 'MavenDeployment'
-    SlotName: 'production'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
-    RuntimeStack: 'JAVA|11-java11'
+# - task: AzureRmWebAppDeployment@4
+#   inputs:
+#     ConnectionType: 'AzureRM'
+#     azureSubscription: 'Azure for Students(2a43cdf0-85f3-4431-acb1-4a13716d66f1)'
+#     appType: 'webAppLinux'
+#     WebAppName: 'MavenAPI'
+#     deployToSlotOrASE: true
+#     ResourceGroupName: 'MavenDeployment'
+#     SlotName: 'production'
+#     packageForLinux: '$(Build.ArtifactStagingDirectory)/VolunteerFinder/$(Build.BuildId).zip'
+#     RuntimeStack: 'JAVA|11-java11'
