@@ -34,7 +34,7 @@ public class UserController {
         return ResponseEntity.status(400).body("user was not deleted or never existed in the first place");
     }
 
-    @PutMapping("/update/{userId}")
+    @PutMapping("/{userId}")
     public ResponseEntity updateUser(@RequestBody UserUpdateViewModel userViewModel) {
       User user = new User(userViewModel.getId(),userViewModel.getFirstName(),userViewModel.getLastName(),userViewModel.getEmail(),userViewModel.getBirthday());
         if (Factory.getUserLogic().updateUser(user)) {

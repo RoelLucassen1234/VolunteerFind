@@ -16,6 +16,7 @@ import { MaterialModule } from './material.module';
 import { RegisterComponent } from './register/register.component';
 
 import { EventinfoComponent } from './eventinfo/eventinfo.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
     imports: [
@@ -32,7 +33,8 @@ import { EventinfoComponent } from './eventinfo/eventinfo.component';
         HomeComponent,
         LoginComponent,
         RegisterComponent,
-        EventinfoComponent
+        EventinfoComponent,
+        EventPageComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
