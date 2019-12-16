@@ -17,6 +17,12 @@ steps:
   displayName: 'npm install and build'
   workingDirectory: 'angular client-side/AngularTest'
 
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'angular client-side/AngularTest'
+    customCommand: 'run test-headless'
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: 'angular client-side/AngularTest/dist/AngularTest'
