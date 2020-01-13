@@ -4,5 +4,7 @@
     confirmPass: string;
     firstName: string;
     lastName: string;
+    date : Date;
+    events : Event[];
 
 }

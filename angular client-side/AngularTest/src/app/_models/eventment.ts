@@ -7,6 +7,6 @@ export class Eventment {
     description : String;
     image : string;
     company : Company;
-    numberOfPeople : number;
+    totalAmountOfPeople : number;
     users : User[];
 }

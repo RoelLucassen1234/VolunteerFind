@@ -6,6 +6,8 @@ import { AuthGuard } from './_guards';
 import { RegisterComponent } from './register/register.component';
 
 import { EventinfoComponent } from './eventinfo/eventinfo.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { CompanyprofileComponent } from './companyprofile/companyprofile.component';
 
 const appRoutes: Routes = [
     {
@@ -26,7 +28,15 @@ const appRoutes: Routes = [
         component: EventinfoComponent,
         // canActivate: [AuthGuard]
     },
-
+    {
+        path: 'user/:id',
+        component: UserprofileComponent,
+        // canActivate: [AuthGuard]
+    },{
+        path: 'company/:id',
+        component: CompanyprofileComponent,
+        // canActivate: [AuthGuard]
+    },
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];

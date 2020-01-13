@@ -22,8 +22,8 @@ public class UserController {
         if (Factory.getUserLogic().postUser(new User(userViewModel.getFirstName(),userViewModel.getLastName(),
                 userViewModel.getEmail(),userViewModel.getPassword(), userViewModel.getConfirmPass(),
                 userViewModel.getBirthday())))
-            return ResponseEntity.status(200).body("it worked");
-        return ResponseEntity.status(400).body("Something went Wrong");
+            return ResponseEntity.status(200).body("user posted");
+        return ResponseEntity.status(400).body("Bad Request");
     }
 
     @DeleteMapping("/delete/{userId}")
@@ -40,17 +40,17 @@ public class UserController {
         if (Factory.getUserLogic().updateUser(user)) {
             return ResponseEntity.ok("");
         }
-        return ResponseEntity.status(400).body("chair could not be updated.");
+        return ResponseEntity.status(404).body("chair could not be updated.");
     }
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity getUser(@PathVariable int userId) {
 
         User user = Factory.getUserLogic().getUser(userId);
         if (user != null) {
             return ResponseEntity.ok(user);
         }
-        return ResponseEntity.status(400).body("chair does not exist.");
+        return ResponseEntity.status(404).body("chair does not exist.");
     }
     @PostMapping("/authentication")
     public ResponseEntity getUser(@RequestBody LoginViewModel loginViewModel) {
@@ -61,7 +61,7 @@ public class UserController {
             AngularUser angularUser = new AngularUser(user.getId(),user.getFirstName(),user.getLastName(),user.getEmail(),user.getHash(), user.getToken());
             return ResponseEntity.ok(angularUser);
         }
-        return ResponseEntity.status(400).body("chair does not exist.");
+        return ResponseEntity.status(401).body("Not Authorized.");
     }
 
     @GetMapping("/session/{sessionToken}")
@@ -74,7 +74,7 @@ public class UserController {
 
             return ResponseEntity.ok(user);
         }
-        return ResponseEntity.status(400).body("user with sessiontoken does not exist.");
+        return ResponseEntity.status(404).body("user with sessiontoken does not exist.");
     }
 
 

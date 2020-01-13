@@ -15,8 +15,6 @@ export class UserService {
   }
 
   register(firstName: string, lastName: string, email: string, password: string, confPass: string) {
-
-
     this.user = new UserView();
     this.user.firstName = firstName;
     this.user.lastName = lastName;
@@ -26,6 +24,10 @@ export class UserService {
 
     console.log(this.restServer.getRestUrl() + '/users')
     return this.http.post('http://localhost:2020/users', this.user);
+  }
 
+  getCertainUser(userId : number){
+    
+    return this.http.get<User>(this.restServer.getRestUrl() + '/users/ ' + userId);
   }
 }

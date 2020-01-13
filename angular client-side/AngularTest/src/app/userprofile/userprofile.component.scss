@@ -1,0 +1,54 @@
+.home-content{
+    padding: 35px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.peopleInfo{
+    display: flex;
+}
+
+mat-card{
+    width: 400px;
+   
+    
+    margin: 15px;
+    // display: flex;    
+    // overflow: hidden;
+    // padding: 0;
+}
+
+.EventInfo{
+    // margin: auto 0;
+}
+
+.info-button{
+//     margin: auto 0 !important;
+
+//    margin-right: 60px !important;
+}
+
+
+
+.total-amount{
+    // margin: auto 0 !important;}
+
+
+.movie-card {
+    img{
+        height: 100%;
+        object-fit: contain;
+        
+        margin: 0;
+    }
+    // mat-card-title {
+    //     overflow: hidden;
+    //     white-space: nowrap;
+    // }
+    // mat-card-content {
+    //     margin-top: 20px; 
+    // }
+}
+}

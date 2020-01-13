@@ -15,8 +15,8 @@
         <h3 class="peopleAmount"> {{this.event.users.length}} / {{this.event.numberOfPeople}}</h3>
   <mat-card class="volunteerboard">
  
-    <mat-card class="movie-card" *ngFor="let user of this.event.users">
-      <p> {{user.firstName}}&nbsp;{{user.lastName}}</p>
+    <mat-card  [routerLink]="['/user', user.id]"  class="movie-card" *ngFor="let user of this.event.users">
+      <p > {{user.firstName}}&nbsp;{{user.lastName}}</p>
     </mat-card>
     <!-- <button mat-raised-button color='primary'  (click)="ngShowInfo()">Join</button> -->
 

@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 
 import { EventinfoComponent } from './eventinfo/eventinfo.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
+import { CompanyprofileComponent } from './companyprofile/companyprofile.component';
 
 @NgModule({
     imports: [
@@ -34,7 +36,9 @@ import { EventPageComponent } from './event-page/event-page.component';
         LoginComponent,
         RegisterComponent,
         EventinfoComponent,
-        EventPageComponent
+        EventPageComponent,
+        UserprofileComponent,
+        CompanyprofileComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

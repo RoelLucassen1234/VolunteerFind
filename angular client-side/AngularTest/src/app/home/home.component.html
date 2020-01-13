@@ -4,13 +4,13 @@
 
         <div>
             <mat-card-title>Evenement : {{event.name}} </mat-card-title>
-            <mat-card-subtitle>Made possible by: {{event.company.name}} </mat-card-subtitle>
+            <mat-card-subtitle [routerLink]="['/company', event.company.id]">Made possible by: {{event.company.name}} </mat-card-subtitle>
         </div>
 
         <img mat-card-image [src]="('data:image/jpg;base64,' + event.image)">
             
   <div class="peopleInfo">
-         <p style="margin-right: 85px;margin-left: 20px;">Needed people : {{event.numberOfPeople}} </p>
+         <p style="margin-right: 85px;margin-left: 20px;">Needed people : {{event.totalAmountOfPeople}} </p>
             <p> Current People : {{event.users.length}}</p>
         </div>
 

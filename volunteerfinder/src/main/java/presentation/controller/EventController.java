@@ -22,8 +22,8 @@ public class EventController {
 
         Event event = new Event(eventViewModel.getName(), eventViewModel.getDescription(),eventViewModel.getImage(),company, null, eventViewModel.getNumberOfPeople());
         if (Factory.getEventLogic().postEvent(event))
-            return ResponseEntity.status(200).body("uploaded event to the database");
-        return ResponseEntity.status(400).body("Something went Wrong");
+            return ResponseEntity.ok("uploaded event to the database");
+        return ResponseEntity.status(400).body("Bad Request");
     }
 
     @GetMapping("/{eventId}")
@@ -33,7 +33,7 @@ public class EventController {
         if (event != null) {
             return ResponseEntity.ok(event);
         }
-        return ResponseEntity.status(400).body("event does not exist.");
+        return ResponseEntity.status(404).body("event not found.");
     }
     @GetMapping("")
     public ResponseEntity getAllEvents() {
@@ -43,7 +43,7 @@ public class EventController {
         if (events != null) {
             return ResponseEntity.ok(events);
         }
-        return ResponseEntity.status(400).body("event does not exist.");
+        return ResponseEntity.status(404).body("events not found.");
     }
 
 
@@ -54,7 +54,7 @@ public class EventController {
            //if (Factory.getEventLogic().updateCompany(eventUpdateViewModel)) {
          //   return ResponseEntity.ok("update succeeded");
        // }
-        return ResponseEntity.status(400).body("event could not be updated.");
+        return ResponseEntity.status(405).body("event could not be updated.");
     }
 
     @DeleteMapping("/{eventId}")
@@ -62,6 +62,6 @@ public class EventController {
         if (Factory.getEventLogic().deleteEvent(eventId)) {
             return ResponseEntity.ok("event was deleted");
         }
-        return ResponseEntity.status(400).body("event was not deleted or never existed in the first place");
+        return ResponseEntity.status(404).body("event was not deleted or never existed in the first place");
     }
 }

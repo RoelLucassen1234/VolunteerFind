@@ -18,14 +18,14 @@ public class CompanyController {
         return ResponseEntity.status(400).body("Something went Wrong");
     }
 
-    @GetMapping("/companies/{companyId}")
+    @GetMapping("/{companyId}")
     public ResponseEntity getCompany(@PathVariable int companyId) {
 
         Company company = Factory.getCompanyLogic().getCompany(companyId);
         if (company != null) {
             return ResponseEntity.ok(company);
         }
-        return ResponseEntity.status(400).body("company does not exist.");
+        return ResponseEntity.status(404).body("company does not exist.");
     }
 
     @DeleteMapping("/delete/{companyId}")
@@ -33,7 +33,7 @@ public class CompanyController {
         if (Factory.getCompanyLogic().deleteCompany(companyId)) {
             return ResponseEntity.ok("company was deleted");
         }
-        return ResponseEntity.status(400).body("user was not deleted or never existed in the first place");
+        return ResponseEntity.status(404).body("company was not deleted or never existed in the first place");
     }
 
 
